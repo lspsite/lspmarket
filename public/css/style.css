@@ -92,26 +92,27 @@ body {
 .list__items {
   flex: 1;
   min-height: 0;
-  overflow-y: auto;
+  overflow-y: scroll;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
   padding: 0 1.5rem 1.5rem;
   scrollbar-width: thin;
-  scrollbar-color: var(--glass-border) transparent;
+  scrollbar-color: var(--silver) transparent;
 }
 
 .list__items::-webkit-scrollbar {
-  width: 4px;
+  width: 6px;
 }
 
 .list__items::-webkit-scrollbar-track {
-  background: transparent;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 3px;
 }
 
 .list__items::-webkit-scrollbar-thumb {
-  background: var(--glass-border);
-  border-radius: 2px;
+  background: var(--silver);
+  border-radius: 3px;
 }
 
 /* --- Pills --- */
