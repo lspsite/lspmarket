@@ -22,14 +22,26 @@
 
   var currentCategory = null;
 
+  function isMobile() {
+    return window.innerWidth <= 600;
+  }
+
+  function setCardListHeight() {
+    card.style.height = isMobile()
+      ? '55dvh'
+      : 'calc(100dvh - 45dvh - 2dvh)';
+  }
+
   function showMenu() {
     currentCategory = null;
+    card.style.height = '';
     menuLayer.style.display = '';
     listLayer.style.display = 'none';
   }
 
   function showList(category) {
     currentCategory = category;
+    setCardListHeight();
     listTitle.textContent = TITLES[category] || '';
     listItems.innerHTML = '<p class="list__empty">Загрузка...</p>';
     menuLayer.style.display = 'none';
@@ -113,4 +125,8 @@
       .on('postgres_changes', { event: '*', schema: 'public', table: 'settings' }, loadSettings)
       .subscribe();
   }
+
+  window.addEventListener('resize', function () {
+    if (currentCategory) setCardListHeight();
+  });
 })();
